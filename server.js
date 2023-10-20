@@ -23,7 +23,7 @@ connectDB();
 // Init Middleware
 app.use(express.json({ extended: false }));
 
-app.get("/", (req, res) => res.send("API Running"));
+app.get("/", (req, res) => res.send(" hello this is demo API  Running"));
 
 // Define Routes
 app.use("/api/users", require("./routes/api/users"));
