@@ -24,7 +24,7 @@ connectDB();
 // Init Middleware
 app.use(express.json({ extended: false }));
 
-// app.get("/", (req, res) => res.send(" hello this is demo API  Running"));
+app.get("/", (req, res) => res.send(" hello this is demo API  Running"));
 
 // Define Routes
 app.use("/api/users", require("./routes/api/users"));
@@ -35,7 +35,7 @@ app.use('/imageUploads', express.static('public/images'));
 app.use('/products', productRouter.router);
 // app.use('/user', userRouter.router);
 app.use('/about', AboutRouter.router);
-app.get('/home', HomeRouter.router);
+app.use('/home', HomeRouter.router);
 app.use('/appointments', AppointmentRouter.router);
 app.use('/medical', MedicalRouter.router);
 app.use('/MapingEcommerce', MapingEcommerceRouter.router);
