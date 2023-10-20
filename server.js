@@ -5,7 +5,7 @@ const HomeRouter = require('./routes/api/home');
 const productRouter = require('./routes/api/product');
 const ContactRouter = require('./routes/api/contact');
 
-const userRouter = require('./routes/api/users');
+// const userRouter = require('./routes/api/users');
 const AboutRouter = require('./routes/api/about');
 const AppointmentRouter = require('./routes/api/appointment');
 const MedicalRouter = require('./routes/api/medical');
