@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 require('dotenv').config();
 const app = express();
 const connectDB = require("./config/db");
@@ -27,6 +28,7 @@ app.use(express.json({ extended: false }));
 app.get("/", (req, res) => res.send(" hello this is demo API  Running"));
 
 // Define Routes
+app.use(cors());
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/profile", require("./routes/api/profile"));
