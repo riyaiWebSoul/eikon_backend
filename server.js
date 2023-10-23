@@ -94,6 +94,26 @@ app.post('/imageUploads', upload.single('image'), (req, res) => {
   // Handle the uploaded file here
   res.send('File uploaded successfully');
 });
+app.delete('/api/deleteImage/', (req, res) => {
+  const imageName = req.params.imageName;
+  const imagePath = path.join(__dirname, 'public', 'images', imageName);
+
+  // Check if the image file exists
+  if (fs.existsSync(imagePath)) {
+    // Delete the image file
+    fs.unlink(imagePath, (err) => {
+      if (err) {
+        console.error('Error deleting image:', err);
+        res.status(500).json({ error: 'Error deleting image' });
+      } else {
+        console.log('Image deleted:', imageName);
+        res.json({ message: 'Image deleted successfully' });
+      }
+    });
+  } else {
+    res.status(404).json({ error: 'Image not found' });
+  }
+});
 
 // Define other API routes
 app.use("/api/users", require("./routes/api/users"));
