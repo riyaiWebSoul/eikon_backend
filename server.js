@@ -94,7 +94,7 @@ app.post('/imageUploads', upload.single('image'), (req, res) => {
   // Handle the uploaded file here
   res.send('File uploaded successfully');
 });
-app.delete('/api/deleteImage/', (req, res) => {
+app.delete('/api/deleteImage/:imageName', (req, res) => {
   const imageName = req.params.imageName;
   const imagePath = path.join(__dirname, 'public', 'images', imageName);
 
@@ -114,6 +114,7 @@ app.delete('/api/deleteImage/', (req, res) => {
     res.status(404).json({ error: 'Image not found' });
   }
 });
+
 
 // Define other API routes
 app.use("/api/users", require("./routes/api/users"));
