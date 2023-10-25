@@ -6,10 +6,14 @@ const LoginId = model.loginId;
 exports.createloginId =  async (req, res) => {
   try {
     
-    const loginIdData = req.body;
-    const newloginId = new LoginId(loginIdData);
-    await newloginId.save();
-    res.json({ success: true, message: 'LoginId created successfully' });
+    // const loginIdData = req.body;
+    // const newloginId = new LoginId(loginIdData);
+    // await newloginId.save();
+    // res.json({ success: true, message: 'LoginId created successfully' });
+
+    const loginIds = await LoginId.findOne();
+    res.json(loginIds);
+
   } catch (error) {
     console.error('Error creating loginId:', error);
     res.status(500).json({ success: false, error: 'Failed to create loginId' });
@@ -19,8 +23,21 @@ exports.createloginId =  async (req, res) => {
 
 exports.getAllloginIds = async (req, res) => {
   try {
-    const loginIds = await LoginId.find();
-    res.json(loginIds);
+    const { email, password } = req.body
+    const user = await LoginId.findOne({email, password });
+    if (!user) {
+      res.status(401).json({
+        message: "Login not successful",
+        error: "User not found",
+      })
+    } else {
+      res.status(200).json({
+        message: "Login successful",
+        user,
+        isValid: true
+      })
+    }
+     
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Failed to fetch loginIds' });
