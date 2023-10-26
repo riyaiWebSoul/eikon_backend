@@ -8,10 +8,11 @@ const mapingEcommerceSchema = new Schema({
         section1: {
           title: String
         },
-        section2: {
+        section2: [{
           description1:String,
-          description2:String
-        }
+          description2:String,
+          Image:String
+        }]
       }
 });
 

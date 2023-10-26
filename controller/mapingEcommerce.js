@@ -1,6 +1,6 @@
-const fs = require("fs");
+ 
 const model= require('../models/mapingEcommerce')
-const mongoose =require('mongoose')
+ 
 const MapingEcommerce=model.MapingEcommerce;
 // const index=fs.readFileSync('index.js' ,'utf-8');
 // const data=JSON.parse(fs.readFileSync('dataone.json'));
