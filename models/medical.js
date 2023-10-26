@@ -8,10 +8,11 @@ const medicalSchema = new Schema({
                 section1: {
                   title:String
                 },
-                section2: {
+                section2:[{
                 description: String,
-                  subDescription:String 
-                }
+                  subDescription:String,
+                  Image:String
+                }]
               }
 });
 
