@@ -11,6 +11,8 @@ const productRouter = require('./routes/api/product');
 const ContactRouter = require('./routes/api/contact');
 const publicDirectory = path.join(__dirname, "public");
 const AboutRouter = require('./routes/api/about');
+const PortfolioRouter = require('./routes/api/portfolio');
+
 const AppointmentRouter = require('./routes/api/appointment');
 const MedicalRouter = require('./routes/api/medical');
 const MapingEcommerceRouter = require('./routes/api/MapingEcommerce');
@@ -140,6 +142,8 @@ app.use('/PatientReview', PatientReview.router);
 app.use('/drList', DrList.router);
 app.use('/imageUpload', ImageUploadRouter.router);
 app.use('/loginId', LoginIdRouter.router);
+app.use('/portfolio', PortfolioRouter.router);
+
 
 const PORT = process.env.PORT || 8080;
 
