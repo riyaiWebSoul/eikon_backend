@@ -63,7 +63,7 @@ app.get('/imageUpload', (req, res) => {
     // Filter out only image files (you can adjust this filter as needed)
     const imageFiles = files.filter((file) => {
       const extname = path.extname(file);
-      return ['.jpg', '.jpeg', '.png', '.gif'].includes(extname.toLowerCase());
+      return ['.jpg', '.jpeg', '.png', '.gif','.bmp'].includes(extname.toLowerCase());
     });
 
     // Create an array of image URLs
