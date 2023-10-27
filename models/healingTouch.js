@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const healingTouchSchema = new Schema({
               title:String,
-              card:[{title:String,count:String}]
+              card:[{title:String,count:String,image:String}]
 
 });
 
