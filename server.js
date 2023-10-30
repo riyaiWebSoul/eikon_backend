@@ -83,8 +83,8 @@ app.get('/api/imageNames', (req, res) => {
     }
 
     const imageFiles = files.filter(file => {
-      const extension = file.split('.').pop().toLowerCase();
-      return extension === 'jpg' || extension === 'png';
+      const extname = path.extname(file);
+      return ['.jpg', '.jpeg', '.png', '.gif','.bmp'].includes(extname.toLowerCase());
     });
 
     res.json(imageFiles);
