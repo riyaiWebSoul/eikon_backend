@@ -96,6 +96,42 @@ app.post('/imageUploads', upload.single('image'), (req, res) => {
   // Handle the uploaded file here
   res.send('File uploaded successfully');
 });
+
+// Define a route for updating images
+app.patch('/imageUpdate/:imageName', upload.single('image'), (req, res) => {
+  const oldImageName = req.params.imageName;
+  const newImageName = `${Date.now()}-${req.file.originalname}`;
+  const oldImagePath = path.join(__dirname, 'public', 'images', oldImageName);
+  const newImagePath = path.join(__dirname, 'public', 'images', newImageName);
+
+  // Check if the old image file exists
+  if (fs.existsSync(oldImagePath)) {
+    // Delete the old image file
+    fs.unlink(oldImagePath, (err) => {
+      if (err) {
+        console.error('Error deleting old image:', err);
+        res.status(500).json({ error: 'Error deleting old image' });
+      } else {
+        console.log('Old image deleted:', oldImageName);
+        // Rename the uploaded image file to the new name
+        fs.rename(req.file.path, newImagePath, (err) => {
+          if (err) {
+            console.error('Error renaming image:', err);
+            res.status(500).json({ error: 'Error renaming image' });
+          } else {
+            console.log('Image updated:', newImageName);
+            res.json({ message: 'Image updated successfully' });
+          }
+        });
+      }
+    });
+  } else {
+    res.status(404).json({ error: 'Old image not found' });
+  }
+});
+
+
+
 app.delete('/api/deleteImage/:imageName', (req, res) => {
   const imageName = req.params.imageName;
   const imagePath = path.join(__dirname, 'public', 'images', imageName);
