@@ -102,7 +102,7 @@ app.patch('/imageUpdate/:imageName', upload.single('image'), (req, res) => {
   const oldImageName = req.params.imageName;
   const newImageName = `${Date.now()}-${req.file.originalname}`;
   const oldImagePath = path.join(__dirname, 'public', 'images', oldImageName);
-  const newImagePath = path.join(__dirname, 'public', 'images', newImageName);
+  const newImagePath = path.join(__dirname, 'public', 'images', oldImageName);
 
   // Check if the old image file exists
   if (fs.existsSync(oldImagePath)) {
