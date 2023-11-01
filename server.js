@@ -12,7 +12,6 @@ const ContactRouter = require('./routes/api/contact');
 const publicDirectory = path.join(__dirname, "public");
 const AboutRouter = require('./routes/api/about');
 const PortfolioRouter = require('./routes/api/portfolio');
-
 const AppointmentRouter = require('./routes/api/appointment');
 const MedicalRouter = require('./routes/api/medical');
 const MapingEcommerceRouter = require('./routes/api/MapingEcommerce');
@@ -92,7 +91,7 @@ app.get('/api/imageNames', (req, res) => {
 });
 
 // Define a route for uploading images
-app.post('/imageUploads', upload.single('image'), (req, res) => {
+app.post('/imageUpload', upload.single('image'), (req, res) => {
   // Handle the uploaded file here
   res.send('File uploaded successfully');
 });
@@ -156,7 +155,7 @@ app.delete('/api/deleteImage/:imageName', (req, res) => {
 
 // Define other API routes
 app.use("/api/users", require("./routes/api/users"));
-app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/auth", require("./routes/api/auth"));get
 app.use("/api/profile", require("./routes/api/profile"));
 app.use("/api/posts", require("./routes/api/posts"));
 
