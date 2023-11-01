@@ -91,7 +91,7 @@ app.get('/api/imageNames', (req, res) => {
 });
 
 // Define a route for uploading images
-app.post('/imageUpload', upload.single('image'), (req, res) => {
+app.post('/imageUploads', upload.single('image'), (req, res) => {
   // Handle the uploaded file here
   res.send('File uploaded successfully');
 });
